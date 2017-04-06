@@ -426,18 +426,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   public ngOnInit():any {
-    //custom code to fix the issue of multiple ng2-selects being opened at the same time\\
-    var _select = this;
-    //create a listener for the cucstom clicked event we created
-    this.element.nativeElement.addEventListener("ng2-select-clicked", function (event) {
-      //if the id that was clicked on is different than this one
-      if (event.detail.id != _select.element.nativeElement.id) {
-        //close the options
-        _select.inputMode = false;
-        _select.optionsOpened = false;
-      };
-    });
-    //end custom code\\
     this.behavior = (this.firstItemHasChildren) ?
       new ChildrenBehavior(this) : new GenericBehavior(this);
   }
@@ -488,16 +476,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   public registerOnTouched(fn:() => {}):void {this.onTouched = fn;}
 
   protected matchClick(e:any):void {
-    //custom code to fire events to be caught and solve the issue of multiple selects being opened at the same time NOTE: this is fired only when the main input is clicked on\\
-    //select all ng-selects
-    let selectElements = document.querySelectorAll("ng-select");
-    //create a custom click event and attach this ng-select's id to it
-    let event = new CustomEvent("ng2-select-clicked", { detail: {id: this.element.nativeElement.id} });
-    for (let SelectElement of selectElements) {
-      //dispatch the custom event to every ng-select on the page
-      SelectElement.dispatchEvent(event)
-    };
-    //end custom code\\
     if (this._disabled === true) {
       return;
     }
