@@ -23,8 +23,8 @@
     "version": "npm run flow.changelog && git add -A"
   },
   "main": "dist/bundles/ng2-select.umd.js",
-  "module": "index.js",
-  "typings": "index.d.ts",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "keywords": [
     "angular2",
     "select",
