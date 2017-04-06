@@ -308,6 +308,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   @Output() public removed:EventEmitter<any> = new EventEmitter();
   @Output() public typed:EventEmitter<any> = new EventEmitter();
   @Output() public opened:EventEmitter<any> = new EventEmitter();
+  @Output() public dropdownOpened:EventEmitter<any> = new EventEmitter();
 
   public options:Array<SelectItem> = [];
   public itemObjects:Array<SelectItem> = [];
@@ -540,6 +541,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   private open():void {
+    this.inputValue = '';
     this.options = this.itemObjects
       .filter((option:SelectItem) => (this.multiple === false ||
       this.multiple === true && !this.active.find((o:SelectItem) => option.text === o.text)));
@@ -548,6 +550,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
       this.behavior.first();
     }
     this.optionsOpened = true;
+    this.dropdownOpened.emit();
   }
 
   private hideOptions():void {
