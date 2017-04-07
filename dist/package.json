@@ -1,6 +1,6 @@
 {
   "main": "dist/bundles/ng2-select.umd.js",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Angular2 based replacement for select boxes",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
