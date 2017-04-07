@@ -11,11 +11,13 @@ export class OffClickDirective implements OnInit, OnDestroy {
   @HostListener('click', ['$event']) public onClick($event: MouseEvent): void {
     $event.stopPropagation();
   }
-
+  
   public ngOnInit(): any {
-    setTimeout(() => { if(typeof document !== 'undefined') { document.addEventListener('click', this.offClickHandler); } }, 0);
+    setTimeout(() => {
+      if(typeof document !== 'undefined') {
+        document.addEventListener('click', this.offClickHandler);} }, 0);
   }
-
+  
   public ngOnDestroy(): any {
     if(typeof document !== 'undefined') { document.removeEventListener('click', this.offClickHandler); }
   }

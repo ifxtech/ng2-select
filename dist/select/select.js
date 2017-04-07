@@ -186,6 +186,14 @@ var SelectComponent = (function () {
         }
     };
     SelectComponent.prototype.ngOnInit = function () {
+        var _select = this;
+        this.element.nativeElement.addEventListener('ng2-select-clicked', function () {
+            var event = arguments[0];
+            if (event.detail.id !== _select.element.nativeElement.id) {
+                _select.inputMode = false;
+                _select.optionsOpened = false;
+            }
+        });
         this.behavior = (this.firstItemHasChildren) ?
             new ChildrenBehavior(this) : new GenericBehavior(this);
     };
@@ -232,6 +240,11 @@ var SelectComponent = (function () {
     SelectComponent.prototype.registerOnChange = function (fn) { this.onChange = fn; };
     SelectComponent.prototype.registerOnTouched = function (fn) { this.onTouched = fn; };
     SelectComponent.prototype.matchClick = function (e) {
+        var selectElements = document.querySelectorAll('ng-select');
+        var event = new CustomEvent('ng2-select-clicked', { detail: { id: this.element.nativeElement.id } });
+        for (var i = 0; i < selectElements.length; i++) {
+            selectElements[i].dispatchEvent(event);
+        }
         if (this._disabled === true) {
             return;
         }

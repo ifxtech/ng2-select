@@ -9,9 +9,11 @@ var OffClickDirective = (function () {
     };
     OffClickDirective.prototype.ngOnInit = function () {
         var _this = this;
-        setTimeout(function () { if (typeof document !== 'undefined') {
-            document.addEventListener('click', _this.offClickHandler);
-        } }, 0);
+        setTimeout(function () {
+            if (typeof document !== 'undefined') {
+                document.addEventListener('click', _this.offClickHandler);
+            }
+        }, 0);
     };
     OffClickDirective.prototype.ngOnDestroy = function () {
         if (typeof document !== 'undefined') {

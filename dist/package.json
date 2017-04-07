@@ -1,9 +1,9 @@
 {
-  "main": "bundles/ng2-select.umd.js",
+  "main": "dist/bundles/ng2-select.umd.js",
   "version": "1.2.2",
   "description": "Angular2 based replacement for select boxes",
-  "module": "index.js",
-  "typings": "index.d.ts",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "keywords": [
     "angular2",
     "select",
@@ -24,7 +24,7 @@
     "@angular/common": "^2.3.0",
     "@angular/core": "^2.3.0"
   },
-  "_id": "ng2-select@1.2.1",
+  "_id": "ng2-select@1.2.2",
   "devDependencies": {},
   "dependencies": {}
 }
